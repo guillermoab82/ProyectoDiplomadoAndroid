@@ -1,5 +1,10 @@
 <resources>
-    <string name="app_name">Eventos CEP</string>
+    <string name="app_name">Events CEP</string>
     <string name="facebook_app_id">1317356271629011</string>
-
+    <string name="txtHeadLogin">YOUR ACOOUNT</string>
+    <string name="txtSubHeadLogin">Login with:</string>
+    <string name="txtComplementLogin">---------- OR ANOTHER ----------</string>
+    <string name="txtLoginAccount">CREATE ACCOUNT</string>
+    <string name="login_hint_Name">Name User</string>
+    <string name="login_hint_email">Email User</string>
 </resources>

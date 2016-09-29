@@ -8,6 +8,8 @@ buildscript {
     }
 }
 apply plugin: 'com.android.application'
+//apply plugin: 'com.google.gms.google-services'
+//apply plugin: 'com.google.gms.client_id'
 apply plugin: 'io.fabric'
 apply plugin: 'android-apt'
 repositories {
@@ -35,9 +37,9 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:24.2.0'
+    compile 'com.android.support:appcompat-v7:24.2.1'
     //para facebook
-    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+    compile 'com.facebook.android:facebook-android-sdk:4.14.1'
     //para butterKnife
     compile 'com.jakewharton:butterknife:8.2.1'
     apt 'com.jakewharton:butterknife-compiler:8.2.1'
@@ -45,4 +47,8 @@ dependencies {
     compile('com.twitter.sdk.android:twitter:2.0.0@aar') {
         transitive = true;
     }
+    //fresco
+    compile 'com.facebook.fresco:fresco:0.13.0'
+    //google
+   // compile 'com.google.android.gms:play-services-auth:9.0.0'
 }

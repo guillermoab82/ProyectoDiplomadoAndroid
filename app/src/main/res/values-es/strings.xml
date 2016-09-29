@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Eventos CEP</string>
+    <string name="txtHeadLogin">TU CUENTA</string>
+    <string name="txtSubHeadLogin">Entrar con:</string>
+    <string name="txtComplementLogin">---------- O BIEN ----------</string>
+    <string name="txtLoginAccount">CREAR CUENTA</string>
+    <string name="login_hint_Name">Nombre</string>
+    <string name="login_hint_email">Correo electrónico</string>
+</resources>
