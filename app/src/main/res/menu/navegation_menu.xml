@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/eventos"
+            android:checkable="false"
+            android:title="@string/title_NavMenuevenConvoca">
+        </item>
+        <item
+            android:id="@+id/informacion"
+            android:checkable="false"
+            android:title="@string/title_NavMenuInforma">
+        </item>
+        <item
+            android:id="@+id/enlaces"
+            android:checkable="false"
+           android:title="@string/title_NavMenuEnlaces">
+        </item>
+        <item
+            android:id="@+id/yoUNAM"
+            android:checkable="false"
+           android:title="@string/title_NavMenuYoUNAM">
+        </item>
+    </group>
+</menu>

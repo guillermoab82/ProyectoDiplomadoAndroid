@@ -7,4 +7,11 @@
     <string name="txtLoginAccount">CREAR CUENTA</string>
     <string name="login_hint_Name">Nombre</string>
     <string name="login_hint_email">Correo electrónico</string>
+    <string name="title_toolbar">toolbar</string>
+    <string name="title_NavMenuEvantos">Usuario</string>
+    <string name="title_NavMenuInforma">Información</string>
+    <string name="title_NavMenuevenConvoca">Eventos/Convocatorias</string>
+    <string name="title_NavMenuEnlaces">Enlaces</string>
+    <string name="title_NavMenuYoUNAM">Yo UNAM</string>
+    <string name="title_NavHeadText">Usuario</string>
 </resources>

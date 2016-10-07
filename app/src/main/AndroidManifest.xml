@@ -3,12 +3,14 @@
     package="mx.unam.posgrado.eventoscep">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    android:name="app.EventosAplication"
     <application
+        android:name="app.EventosAplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
          <activity android:name="login.LoginEventos">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
