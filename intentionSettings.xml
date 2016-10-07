@@ -2,5 +2,7 @@
   <component name="IntentionManagerSettings">
     <ignoreAction name="Java/Declaration/Split Declaration" />
     <ignoreAction name="Android/Insert App Indexing API Code" />
+    <ignoreAction name="Java/Refactorings/Introduce local variable" />
+    <ignoreAction name="Java/Declaration/Change class type parameter" />
   </component>
 </application>
