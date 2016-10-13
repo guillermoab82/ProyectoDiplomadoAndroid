@@ -41,16 +41,26 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-fresco.pro'
-            signingConfig signingConfigs.release
+            buildConfigField "String","URL","\"http://132.247.120.21\""
         }
+        debug {
+            minifyEnabled false
+            buildConfigField "String","URL","\"http://132.247.120.21\""
     }
 
+}
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.4.0'
+	//Para Retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
+    //Para Picasso
+    compile 'com.squareup.picasso:picasso:2.5.2'
     //para facebook
     compile 'com.facebook.android:facebook-android-sdk:4.14.1'
     //para butterKnife

@@ -1,0 +1,10 @@
+<<<<<<< HEAD
+#Fri Sep 23 09:05:47 CDT 2016
+=======
+#Wed Sep 14 17:35:39 CDT 2016
+>>>>>>> eventos
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-2.14.1-all.zip

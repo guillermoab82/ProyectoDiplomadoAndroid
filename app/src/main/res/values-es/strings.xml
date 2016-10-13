@@ -14,4 +14,10 @@
     <string name="title_NavMenuEnlaces">Enlaces</string>
     <string name="title_NavMenuYoUNAM">Yo UNAM</string>
     <string name="title_NavHeadText">Usuario</string>
+    <string name="labelFInicio">Fecha de Inicio:</string>
+    <string name="labelHInicio">Hora de inicio</string>
+    <string name="labelFFin">Fecha de térmico</string>
+    <string name="labelHFin">Hora de término</string>
+    <string name="labelLink">Para mayor información visita el siguiente enlace:</string>
+    <string name="msj_error_data">There was an error loading data!!!</string>
 </resources>

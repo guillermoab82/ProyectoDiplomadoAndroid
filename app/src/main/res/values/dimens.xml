@@ -2,6 +2,9 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="cardviewLayoutMargin">2dp</dimen>
+    <dimen name="simpleDraweeDetails">250dp</dimen>
+    <dimen name="detailsTitleSize">20dp</dimen>
     <dimen name="heightButtonLogin">40dp</dimen>
     <dimen name="widthButtonLogin">300dp</dimen>
     <dimen name="heightTextHeadLogin">32dp</dimen>

@@ -55,8 +55,8 @@ public class Principal extends AppCompatActivity {
                 drawerlayout.closeDrawers();
                 switch (item.getItemId()) {
                     case R.id.eventos:
-                        Snackbar.make(findViewById(android.R.id.content), "Eventos / convocatorias.", Snackbar.LENGTH_SHORT).show();
-                        // getFragmentManager().beginTransaction().replace(R.id.activity_detalles_fldetalles,new fragment_today()).commit();
+                        //Snackbar.make(findViewById(android.R.id.content), "Eventos / convocatorias.", Snackbar.LENGTH_SHORT).show();
+                        getFragmentManager().beginTransaction().replace(R.id.mainContenedor,new EventoLista()).commit();
                         return true;
                     case R.id.informacion:
                         Snackbar.make(findViewById(android.R.id.content), "Información.", Snackbar.LENGTH_SHORT).show();

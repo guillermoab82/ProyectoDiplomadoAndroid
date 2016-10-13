@@ -1,27 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="mx.unam.posgrado.eventoscep">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    android:name="app.EventosAplication"
     <application
-        android:name="app.EventosAplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:name=".app.EventApplication"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-         <activity android:name="login.LoginEventos">
+        <activity android:name="login.LoginEventos">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+            </intent-filter>
         </activity>
-        <!--<activity android:name="com.facebook.FacebookActivity"
-        //    android:label="@string/app_name" />
-        //android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-        // android:theme="@android:style/Theme.Translucent.NoTitleBar"-->
-        <activity android:name=".Principal"/>
+        <activity android:name="com.facebook.FacebookActivity"
+           android:label="@string/app_name"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:name=".Principal">
+
+        </activity>
+        <!--<activity android:name=".EventoLista"/>-->
+        <activity android:name=".EventoDetails"></activity>
+        <activity android:name=".PruebaFrag">
+
+        </activity>
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
         <meta-data android:name="io.fabric.ApiKey" android:value="a954d3ef9c7942fa502333cae3fbe8e32ebd55bd" />
     </application>
