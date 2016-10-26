@@ -76,7 +76,8 @@ import mx.unam.posgrado.eventoscep.R;
         setContentView(R.layout.activity_login_eventos);
 
         ButterKnife.bind(this);
-
+        callbackManager = CallbackManager.Factory.create();
+        loginButtonfb.registerCallback(callbackManager,this);
         //para twitter
         loginButtonTW.setCallback(new Callback<TwitterSession>() {
             @Override
@@ -158,15 +159,15 @@ TwitterSession session = Twitter.getSessionManager().getActiveSession();
 //facebook
     @Override
     public void onError(FacebookException error) {
-
+        Log.d("FaceBookFailed", error.getMessage());
     }
 //facebook
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
        // facebook
-        callbackManager = CallbackManager.Factory.create();
-        loginButtonfb.registerCallback(callbackManager,this);
+        /*callbackManager = CallbackManager.Factory.create();
+        loginButtonfb.registerCallback(callbackManager,this);*/
         callbackManager.onActivityResult(requestCode,resultCode,data);
    //twitter
         loginButtonTW.onActivityResult(requestCode,resultCode,data);

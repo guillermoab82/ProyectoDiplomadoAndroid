@@ -35,7 +35,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventViewHolder>{
             if(events.getUri()!=null){
                 url= events.getUri();
             }else {
-                url = "img-not-available.svg";
+                url = "image-not-available.png";
             }
         }
         holder.eventHolder_img.setImageURI("http://www.posgrado.unam.mx/sites/default/files/"+url);

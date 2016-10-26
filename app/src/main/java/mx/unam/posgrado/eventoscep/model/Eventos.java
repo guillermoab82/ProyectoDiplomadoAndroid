@@ -59,6 +59,9 @@ public class Eventos implements Serializable {
     @Expose
     private String fEndC;
 
+    @SerializedName("sURI")
+    @Expose
+    private String sURI;
     /**
      *
      * @return
@@ -346,5 +349,19 @@ public class Eventos implements Serializable {
     public void setFEndC(String fEndC) {
         this.fEndC = fEndC;
     }
+
+    /**
+     *
+     * @return
+     * The sURI
+     */
+    public String getsURI(){ return sURI; }
+
+    /**
+     *
+     * @param sURI
+     * The sURI
+     */
+    public void setsURI(String sURI) { this.sURI = sURI; }
 
 }

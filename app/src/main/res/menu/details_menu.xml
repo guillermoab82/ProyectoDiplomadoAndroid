@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/URIShare"
+        android:icon="@android:drawable/ic_menu_share"
+        android:title="@string/txtShare"
+        app:showAsAction="always"></item>
+    <item android:id="@+id/AddFav"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="@string/txtFav"
+        app:showAsAction="always"></item>
+    <item android:id="@+id/AddCalendar"
+        android:icon="@android:drawable/ic_menu_agenda"
+        android:title="@string/txtCalendar"
+        app:showAsAction="always"></item>
+</menu>

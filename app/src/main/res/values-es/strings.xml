@@ -20,4 +20,8 @@
     <string name="labelHFin">Hora de término</string>
     <string name="labelLink">Para mayor información visita el siguiente enlace:</string>
     <string name="msj_error_data">There was an error loading data!!!</string>
+    <string name="txtShare">Compartir</string>
+    <string name="txtFav">Agregar a favaritos</string>
+    <string name="txtCalendar">Agregar a calendario</string>
+    <string name="msjShare">Compartir informacion del evento</string>
 </resources>
