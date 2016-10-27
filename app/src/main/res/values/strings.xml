@@ -24,5 +24,6 @@
     <string name="txtFav">Add Favarities</string>
     <string name="txtCalendar">Add Calendar</string>
     <string name="msjShare">Share event info</string>
+    <string name="EventCalendarTitle">Event CEP</string>
 
 </resources>

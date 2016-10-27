@@ -2,15 +2,20 @@ package mx.unam.posgrado.eventoscep;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -83,6 +88,24 @@ public class EventoDetails extends AppCompatActivity{
                 shareIntent.setType("text/plain");
                 shareIntent.putExtra(Intent.EXTRA_TEXT,eventos.getsURI().toString());
                 startActivity(Intent.createChooser(shareIntent,getResources().getText(R.string.msjShare)));
+                return true;
+            case R.id.AddCalendar:
+                String fIniStr = eventos.getFInitC();
+                String fEndStr = eventos.getFEndC();
+                /*Calendar fIni = Calendar.getInstance();
+                fIni.set(Integer.parseInt(fIniStr.substring(0,4)),Integer.parseInt(fIniStr.substring(5,7)),Integer.parseInt(fIniStr.substring(8,10)),Integer.parseInt(fIniStr.substring(11,13)),Integer.parseInt(fIniStr.substring(14,16)));
+                Calendar fEnd = Calendar.getInstance();
+                fEnd.set(Integer.parseInt(fEndStr.substring(0,4)),Integer.parseInt(fEndStr.substring(5,7)),Integer.parseInt(fEndStr.substring(8,10)),Integer.parseInt(fEndStr.substring(11,13)),Integer.parseInt(fEndStr.substring(14,16)));*/
+                GregorianCalendar fIni = new GregorianCalendar(Integer.parseInt(fIniStr.substring(0,4)),Integer.parseInt(fIniStr.substring(5,7))-1,Integer.parseInt(fIniStr.substring(8,10)),Integer.parseInt(fIniStr.substring(11,13)),Integer.parseInt(fIniStr.substring(14,16)));
+                GregorianCalendar fEnd = new GregorianCalendar(Integer.parseInt(fEndStr.substring(0,4)),Integer.parseInt(fEndStr.substring(5,7))-1,Integer.parseInt(fEndStr.substring(8,10)),Integer.parseInt(fEndStr.substring(11,13)),Integer.parseInt(fEndStr.substring(14,16)));
+                Log.d("FechaInicio", fIniStr.substring(0,4) +"/" + fIniStr.substring(5,7) +"/" + fIniStr.substring(8,10) +"/" + fIniStr.substring(11,13) +"/" + fIniStr.substring(14,16));
+                Intent addCalendarIntent = new Intent(Intent.ACTION_INSERT);
+                addCalendarIntent.setType("vnd.android.cursor.item/event");
+                addCalendarIntent.putExtra(CalendarContract.Events.TITLE,getResources().getText(R.string.EventCalendarTitle));
+                addCalendarIntent.putExtra(CalendarContract.Events.DESCRIPTION,eventos.getTitle());
+                addCalendarIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,fIni.getTimeInMillis());
+                addCalendarIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,fEnd.getTimeInMillis());
+                startActivity(addCalendarIntent);
                 return true;
             case android.R.id.home:
                 finish();
