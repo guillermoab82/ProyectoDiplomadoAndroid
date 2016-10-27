@@ -24,5 +24,6 @@
     <string name="txtFav">Add Favarities</string>
     <string name="txtCalendar">Add Calendar</string>
     <string name="msjShare">Share event info</string>
+    <string name="server_client_id" translatable="false">363120381779-guqfr9dtmv70amrqh1r7qumvn2oa4qck.apps.googleusercontent.com</string>
 
 </resources>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "531248847424",
+    "project_id": "eventoscep-f6953"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531248847424:android:1fe0f114fef85e0c",
+        "android_client_info": {
+          "package_name": "mx.unam.posgrado.eventoscep"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531248847424-st24353sv9oql9u91fn39nb08or0putb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mx.unam.posgrado.eventoscep",
+            "certificate_hash": "5793E9539EC39F048915AF2F19F5C2E7CAC67F7D"
+          }
+        },
+        {
+          "client_id": "531248847424-9eissqo50ob4m5s6nf3gjspv4t1kn58n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1JW1p_EGOfD6OB1VwBLxrXyU_qKpwAfE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

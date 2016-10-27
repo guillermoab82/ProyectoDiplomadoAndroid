@@ -7,12 +7,7 @@
 <LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:weightSum="1">
+    android:layout_height="match_parent">
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/profileImage"
@@ -29,15 +24,17 @@
         android:layout_marginBottom="@dimen/marginBottonButtonLogin"
         android:textSize="@dimen/LetterSizeTextHeadLogin"
         android:textStyle="normal|bold"
-        android:gravity="center_horizontal"/>
+        android:gravity="center_horizontal"
+        android:paddingLeft="@dimen/activity_horizontal_margin"/>
     <TextView
         android:id="@+id/txtSubHeadLogin"
         android:layout_width="@dimen/widthTextLogin"
-        android:layout_height="@dimen/heightTextotherLogin"
+        android:layout_height="wrap_content"
         android:text="@string/txtSubHeadLogin"
         android:layout_marginBottom="@dimen/marginBottonButtonLogin"
         android:textColor="@color/colortxtOthersLogin"
-        android:textSize="@dimen/LetterSizeTextotherLogin"/>
+        android:textSize="@dimen/LetterSizeTextotherLogin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"/>
     <com.facebook.login.widget.LoginButton
         android:id="@+id/fb_login_buttonFB"
         android:layout_gravity="center"
@@ -52,9 +49,16 @@
         android:layout_marginTop="@dimen/marginTopButtonLogin"
         android:layout_marginBottom="@dimen/marginBottonButtonLogin"
         android:layout_height="@dimen/heightButtonLogin"
-         android:layout_width="@dimen/widthButtonLogin"
+        android:layout_width="@dimen/widthButtonLogin"
         android:textSize="@dimen/LetterSizeTextotherLogin"/>
-
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/marginTopButtonLogin"
+        android:layout_marginBottom="@dimen/marginBottonButtonLogin"
+        android:layout_height="@dimen/heightButtonLogin"
+        android:layout_width="@dimen/widthButtonLogin"
+        android:textSize="@dimen/LetterSizeTextotherLogin" />
     <TextView
         android:id="@+id/txtComplementLogin"
         android:layout_width="match_parent"
@@ -62,15 +66,15 @@
         android:layout_marginBottom="@dimen/marginBottonButtonLogin"
         android:textColor="@color/colortxtOthersLogin"
         android:textSize="@dimen/LetterSizeTextotherLogin"
-        android:gravity="center"
-        android:layout_height="@dimen/heightTextotherLogin" />
+        android:layout_height="@dimen/heightTextotherLogin"
+        android:layout_gravity="center_horizontal"/>
     <EditText
         android:id="@+id/nameLogin"
         android:layout_width="@dimen/widthEdiTxtLogin"
         android:layout_height="@dimen/heightEdiTxtLogin"
         android:layout_marginTop="@dimen/marginTopButtonLogin"
         android:layout_marginBottom="@dimen/marginBottonButtonLogin"
-        android:gravity="center"
+        android:layout_gravity="center_horizontal"
         android:textSize="@dimen/sizeEdiTxtLogin"
         android:hint="@string/login_hint_Name"/>
     <EditText
@@ -79,7 +83,7 @@
         android:layout_height="@dimen/heightEdiTxtLogin"
         android:layout_marginTop="@dimen/marginTopButtonLogin"
         android:layout_marginBottom="@dimen/marginBottonButtonLogin"
-        android:gravity="center"
+        android:layout_gravity="center_horizontal"
         android:textSize="@dimen/sizeEdiTxtLogin"
         android:hint="@string/login_hint_email"/>
     <Button
@@ -89,7 +93,7 @@
         android:layout_marginTop="@dimen/marginTopButtonLogin"
         android:layout_marginBottom="@dimen/marginBottonButtonLogin"
         android:text="@string/txtLoginAccount"
-        android:gravity="center"
+        android:layout_gravity="center_horizontal"
         android:fontFamily="sans-serif"
         android:background="@color/cardview_dark_background"
         android:textColor="@color/cardview_light_background"
