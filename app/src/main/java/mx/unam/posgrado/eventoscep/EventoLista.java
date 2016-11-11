@@ -66,7 +66,7 @@ public class EventoLista extends Fragment {
                 startActivity(intent);
             }
         });
-        EventInterface eventInterface = EventData.getRetofitInstance().create(EventInterface.class);
+        EventInterface eventInterface = EventData.getRetofitInstance(1).create(EventInterface.class);
         Call<Events> modeleventsCall = eventInterface.getEvents();
         modeleventsCall.enqueue(new Callback<Events>() {
             @Override

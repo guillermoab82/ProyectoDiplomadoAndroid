@@ -41,10 +41,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-fresco.pro'
             buildConfigField "String","URL","\"http://132.247.120.21\""
+            buildConfigField "String", "URL1", "\"http://132.248.246.61:74\""
         }
         debug {
-            minifyEnabled false
+            minifyEnabled true
             buildConfigField "String","URL","\"http://132.247.120.21\""
+            buildConfigField "String", "URL1", "\"http://132.248.246.61:74\""
     }
 
 }
@@ -75,5 +77,6 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.4.0'
     compile 'com.android.support:design:23.4.0'
     //google
+    compile 'com.google.code.gson:gson:2.2.+'
    compile 'com.google.android.gms:play-services-auth:9.0.0'
 }

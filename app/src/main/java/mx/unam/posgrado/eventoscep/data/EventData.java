@@ -13,14 +13,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class EventData {
-    public static Retrofit getRetofitInstance(){
+    static String  buildconfigIN;
+    public static Retrofit getRetofitInstance(Integer nURL){
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient.Builder okHttpClient = new OkHttpClient.Builder();
         okHttpClient.addInterceptor(httpLoggingInterceptor);
-
-        return new Retrofit.Builder().baseUrl(BuildConfig.URL)
+   if (nURL == 1) { buildconfigIN = BuildConfig.URL;} else {buildconfigIN = BuildConfig.URL1;}
+        return new Retrofit.Builder().baseUrl(buildconfigIN)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClient.build())
                 .build();
