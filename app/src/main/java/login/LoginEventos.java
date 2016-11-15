@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.support.annotation.BoolRes;
+import android.support.annotation.IntegerRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -48,6 +50,7 @@ import mx.unam.posgrado.eventoscep.R;
 import mx.unam.posgrado.eventoscep.data.EventData;
 import mx.unam.posgrado.eventoscep.data.EventInterface;
 import mx.unam.posgrado.eventoscep.model.USERRequest;
+import mx.unam.posgrado.eventoscep.model.UserResponseWS;
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -189,34 +192,37 @@ public class LoginEventos extends AppCompatActivity  implements FacebookCallback
         userRequest.setclave(userid);
         userRequest.setnombre(namesocial);
         userRequest.setcorreo(email);
-        Call<Boolean> userResponseCall = userInterface.getTokenAccess(userRequest);
+        Call<UserResponseWS> userResponseCall = userInterface.getTokenAccess(userRequest);
         try {
-            userResponseCall.enqueue(new retrofit2.Callback<Boolean>() {
+            userResponseCall.enqueue(new retrofit2.Callback<UserResponseWS>() {
                 @Override
-                public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                    int statuscode = response.code();
-                    Intent intent = new Intent(getApplicationContext(), Principal.class);
-                    intent.putExtra("id", userid);
-                    intent.putExtra("name", namesocial);
-                    intent.putExtra("imagestr", imagesocial);
-                    startActivity(intent);
-                    //USERResponse userResponse = response.body();*/
-                    Log.d("muy bien insert:", " bien en insert" + statuscode);
-                }
+                public void onResponse(Call<UserResponseWS> call, Response<UserResponseWS> response) {
+                    //regresa datos el webservice??
+                    if (response.body() != null) {
+                        //guardar informacion en sharepreference
+
+                        Intent intent = new Intent(getApplicationContext(), Principal.class);
+                        intent.putExtra("id", userid);
+                        intent.putExtra("name", namesocial);
+                        intent.putExtra("imagestr", imagesocial);
+                        startActivity(intent);
+
+                    }
+                    else{
+                        Snackbar.make(findViewById(android.R.id.content),"vuelva a intentar", Snackbar.LENGTH_SHORT).show();
+                    } //end of if
+                 }
 
                 @Override
-                public void onFailure(Call<Boolean> call, Throwable t) {
+                public void onFailure(Call<UserResponseWS> call, Throwable t) {
                     Snackbar.make(findViewById(android.R.id.content), t.toString(), Snackbar.LENGTH_SHORT).show();
-                   }
+                }
             });
-            ///// termina inserta
-            //termina inserta usuario
-
         }
         catch (Exception e)
-            {
+        {
                 Snackbar.make(findViewById(android.R.id.content), e.toString(), Snackbar.LENGTH_SHORT).show();
-            }
+        }
     }
 
     //faceook
