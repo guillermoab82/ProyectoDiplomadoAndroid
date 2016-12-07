@@ -20,8 +20,13 @@ public class UserResponseWS {
     @SerializedName("correo")
     @Expose
     private String correo;
+    @SerializedName("url")
+    @Expose
+    private String url;
+
     public String getid() {return id;}
     public String getclave() {return clave;}
     public String getnombre() {return nombre;}
     public String getcorreo() {return correo;}
+    public String geturl() {return url;}
 }

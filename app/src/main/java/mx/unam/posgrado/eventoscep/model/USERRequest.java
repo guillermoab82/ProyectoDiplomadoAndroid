@@ -9,6 +9,7 @@ public class USERRequest {
     private String clave;
     private String nombre;
     private String correo;
+    private String url;
 
     public String getid() {
         return id;
@@ -29,7 +30,11 @@ public class USERRequest {
     public String getcorreo() {
         return correo;
     }
-    public void setcorreo(String correo) {
-        this.correo = correo;
+    public void setcorreo(String correo) {this.correo = correo;}
+    public String geturl() {
+        return url;
+    }
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

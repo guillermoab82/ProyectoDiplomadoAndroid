@@ -4,9 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
-import android.support.annotation.BoolRes;
-import android.support.annotation.IntegerRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -60,7 +57,7 @@ public class LoginEventos extends AppCompatActivity  implements FacebookCallback
     CallbackManager callbackManager;
     private String namesocial, imagesocial;
     TwitterSession session;
-    String userid,email;
+    String userid,email,origen;
     private static final String TAG = "SignInActivity";
     //Signin button google
     private SignInButton signInButton;
@@ -116,7 +113,24 @@ public class LoginEventos extends AppCompatActivity  implements FacebookCallback
         signInButton.setOnClickListener(this);
         //google fin
         //para twitter
-        loginButtonTW.setCallback(new Callback<TwitterSession>() {
+       /* loginButtonTW.setCallback(new Callback<TwitterSession>() {
+            @Override
+            public void success(Result<TwitterSession> result) {
+                // The TwitterSession is also available through:
+                // Twitter.getInstance().core.getSessionManager().getActiveSession()
+                TwitterSession session = result.data;
+                // TODO: Remove toast and use the TwitterSession's userID
+                // with your app's user model
+                String msg = "@" + session.getUserName() + " logged in! (#" + session.getUserId() + ")";
+                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+            }
+            @Override
+            public void failure(TwitterException exception) {
+                Log.d("TwitterKit", "Login with Twitter failure", exception);
+            }
+        });*/
+
+         loginButtonTW.setCallback(new Callback<TwitterSession>() {
             @Override
             public void success(Result<TwitterSession> result) {
                 session = result.data;
@@ -131,7 +145,10 @@ public class LoginEventos extends AppCompatActivity  implements FacebookCallback
                                 namesocial = user.name;
                                 imagesocial = user.profileImageUrl;
                                 userid = String.valueOf(user.id);
+                                //Log.d ("cadena:" + namesocial + " " + imagesocial  + " " + userid);
+                                Snackbar.make(findViewById(android.R.id.content), namesocial + " " + imagesocial  + " " + userid, Snackbar.LENGTH_SHORT).show();
                                 email = "twitter@twitter.com";//user.email;
+                                origen = "twitter";
                                 cambiaActivity();
                             }
 
@@ -175,6 +192,7 @@ public class LoginEventos extends AppCompatActivity  implements FacebookCallback
                     imagesocial = "http://graph.facebook.com/" + object.getString("id") + "/picture?type=large";
                     userid = String.valueOf(object.getLong("id"));
                     email = "facebook@facebook.com";//object.getString("email");
+                    origen = "facebook";
                     cambiaActivity();
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -192,6 +210,7 @@ public class LoginEventos extends AppCompatActivity  implements FacebookCallback
         userRequest.setclave(userid);
         userRequest.setnombre(namesocial);
         userRequest.setcorreo(email);
+        userRequest.setUrl(imagesocial);
         Call<UserResponseWS> userResponseCall = userInterface.getTokenAccess(userRequest);
         try {
             userResponseCall.enqueue(new retrofit2.Callback<UserResponseWS>() {
@@ -199,8 +218,16 @@ public class LoginEventos extends AppCompatActivity  implements FacebookCallback
                 public void onResponse(Call<UserResponseWS> call, Response<UserResponseWS> response) {
                     //regresa datos el webservice??
                     if (response.body() != null) {
-                        //guardar informacion en sharepreference
 
+                        //guardar informacion en sharepreference
+                        /*String mId_user = response.body().getid();
+                        String mname_user = namesocial;
+                        String mURL_user = imagesocial;
+                        String morigin_user = origen;
+                        PreferenceUser util = new PreferenceUser(getApplicationContext());
+                        util.saveUser(new UserCredential(mId_user,mname_user,mURL_user,morigin_user));
+                        finish();*/
+                    //manda los datos y presenta la activity principal
                         Intent intent = new Intent(getApplicationContext(), Principal.class);
                         intent.putExtra("id", userid);
                         intent.putExtra("name", namesocial);
@@ -296,6 +323,7 @@ public class LoginEventos extends AppCompatActivity  implements FacebookCallback
             imagesocial=acct.getPhotoUrl().toString();
             userid=String.valueOf(acct.getId());
             email="google@google.com";//(acct.getEmail());
+            origen="google";
             cambiaActivity();
         } else {
             //If login fails
