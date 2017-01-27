@@ -53,7 +53,7 @@ public class EventoLista extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL);
-        eventsListRecycler.setLayoutManager(linearLayoutManager);
+        eventsListRecycler.setLayoutManager(gridLayoutManager);
         eventsListRecycler.setItemAnimator(new DefaultItemAnimator());
         final EventAdapter eventAdapter = new EventAdapter();
         eventAdapter.setOnItemClickListener(new EventAdapter.OnItemClickListener(){

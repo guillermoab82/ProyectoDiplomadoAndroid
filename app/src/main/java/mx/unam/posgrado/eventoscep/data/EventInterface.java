@@ -9,7 +9,7 @@ import retrofit2.http.GET;
  */
 
 public interface EventInterface {
-    @GET("webservicep/get.php?status=1")
+    @GET("webapp/get.php?status=1")
     Call<Events> getEvents();
 
 }
