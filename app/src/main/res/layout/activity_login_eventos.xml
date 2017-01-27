@@ -7,12 +7,13 @@
 <LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="1">
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/profileImage"
         android:layout_width="@dimen/widthlogologin"
-        android:layout_height="@dimen/heightlogologin"
+        android:layout_height="97dp"
         fresco:placeholderImage="@drawable/unamposgrado"
         android:layout_gravity="center_horizontal"
         />
@@ -28,13 +29,14 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"/>
     <TextView
         android:id="@+id/txtSubHeadLogin"
-        android:layout_width="@dimen/widthTextLogin"
+        android:layout_width="188dp"
         android:layout_height="wrap_content"
         android:text="@string/txtSubHeadLogin"
         android:layout_marginBottom="@dimen/marginBottonButtonLogin"
         android:textColor="@color/colortxtOthersLogin"
         android:textSize="@dimen/LetterSizeTextotherLogin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"/>
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:layout_weight="0.15" />
     <com.facebook.login.widget.LoginButton
         android:id="@+id/fb_login_buttonFB"
         android:layout_gravity="center"
@@ -50,6 +52,7 @@
         android:layout_marginBottom="@dimen/marginBottonButtonLogin"
         android:layout_height="@dimen/heightButtonLogin"
         android:layout_width="@dimen/widthButtonLogin"
+        android:layout_centerInParent="true"
         android:textSize="@dimen/LetterSizeTextotherLogin"/>
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"

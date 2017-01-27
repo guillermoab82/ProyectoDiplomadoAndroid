@@ -2,6 +2,7 @@ package login;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
@@ -10,7 +11,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -29,6 +34,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
@@ -39,22 +46,33 @@ import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 import com.twitter.sdk.android.core.models.User;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.StringReader;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import io.fabric.sdk.android.Fabric;
 import mx.unam.posgrado.eventoscep.Principal;
 import mx.unam.posgrado.eventoscep.R;
 import mx.unam.posgrado.eventoscep.data.EventData;
 import mx.unam.posgrado.eventoscep.data.EventInterface;
 import mx.unam.posgrado.eventoscep.model.USERRequest;
+import mx.unam.posgrado.eventoscep.model.UserCredential;
 import mx.unam.posgrado.eventoscep.model.UserResponseWS;
+import mx.unam.posgrado.eventoscep.util.PreferenceUser;
 import retrofit2.Call;
 import retrofit2.Response;
 
 public class LoginEventos extends AppCompatActivity  implements FacebookCallback<LoginResult>,GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
+    //private static final String TWITTER_KEY = "L7N6g1js11mcUQ3wjTPGi5nlz";
+    //private static final String TWITTER_SECRET = "hRr6K3RRe7tvftq9FpTUefX8RQUCTaIyfkW0nYmodV4P1HQN9k";
     private static final String TWITTER_KEY = "L7N6g1js11mcUQ3wjTPGi5nlz";
     private static final String TWITTER_SECRET = "hRr6K3RRe7tvftq9FpTUefX8RQUCTaIyfkW0nYmodV4P1HQN9k";
     CallbackManager callbackManager;
+    @BindView(R.id.buttonaccount) Button loginButton;
+    @BindView(R.id.nameLogin) EditText namelogin;
+    @BindView(R.id.emailLogin) EditText emailogin;
     private String namesocial, imagesocial;
     TwitterSession session;
     String userid,email,origen;
@@ -95,6 +113,18 @@ public class LoginEventos extends AppCompatActivity  implements FacebookCallback
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login_eventos);
         ButterKnife.bind(this);
+
+        //preguntar al share preferencesi existe un login, para ya no pedir el login
+        SharedPreferences pref = getSharedPreferences("evanPreference", Context.MODE_PRIVATE);
+        String correo = pref.getString("id", "0");
+        if (correo != "0") {
+            Intent intent = new Intent(getApplicationContext(), Principal.class);
+            intent.putExtra("id", pref.getString("id", "0"));
+            intent.putExtra("name", pref.getString("name", ""));
+            intent.putExtra("imagestr", pref.getString("imagestr", ""));
+            startActivity(intent);
+        }
+
         //google
         //Initializing google signin option
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -113,24 +143,9 @@ public class LoginEventos extends AppCompatActivity  implements FacebookCallback
         signInButton.setOnClickListener(this);
         //google fin
         //para twitter
-       /* loginButtonTW.setCallback(new Callback<TwitterSession>() {
-            @Override
-            public void success(Result<TwitterSession> result) {
-                // The TwitterSession is also available through:
-                // Twitter.getInstance().core.getSessionManager().getActiveSession()
-                TwitterSession session = result.data;
-                // TODO: Remove toast and use the TwitterSession's userID
-                // with your app's user model
-                String msg = "@" + session.getUserName() + " logged in! (#" + session.getUserId() + ")";
-                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-            }
-            @Override
-            public void failure(TwitterException exception) {
-                Log.d("TwitterKit", "Login with Twitter failure", exception);
-            }
-        });*/
+        Log.d ("antes twitter:" ,"antes de twiter");
 
-         loginButtonTW.setCallback(new Callback<TwitterSession>() {
+        loginButtonTW.setCallback(new Callback<TwitterSession>() {
             @Override
             public void success(Result<TwitterSession> result) {
                 session = result.data;
@@ -145,8 +160,8 @@ public class LoginEventos extends AppCompatActivity  implements FacebookCallback
                                 namesocial = user.name;
                                 imagesocial = user.profileImageUrl;
                                 userid = String.valueOf(user.id);
-                                //Log.d ("cadena:" + namesocial + " " + imagesocial  + " " + userid);
-                                Snackbar.make(findViewById(android.R.id.content), namesocial + " " + imagesocial  + " " + userid, Snackbar.LENGTH_SHORT).show();
+                               Log.d ("cadena twitter:" , namesocial + " " + imagesocial  + " " + userid);
+                               // Snackbar.make(findViewById(android.R.id.content), namesocial + " " + imagesocial  + " " + userid, Snackbar.LENGTH_SHORT).show();
                                 email = "twitter@twitter.com";//user.email;
                                 origen = "twitter";
                                 cambiaActivity();
@@ -218,40 +233,61 @@ public class LoginEventos extends AppCompatActivity  implements FacebookCallback
                 public void onResponse(Call<UserResponseWS> call, Response<UserResponseWS> response) {
                     //regresa datos el webservice??
                     if (response.body() != null) {
-
                         //guardar informacion en sharepreference
-                        /*String mId_user = response.body().getid();
-                        String mname_user = namesocial;
-                        String mURL_user = imagesocial;
-                        String morigin_user = origen;
-                        PreferenceUser util = new PreferenceUser(getApplicationContext());
-                        util.saveUser(new UserCredential(mId_user,mname_user,mURL_user,morigin_user));
-                        finish();*/
-                    //manda los datos y presenta la activity principal
+                        Log.d("preference", "estoyen preference");
+                        SharedPreferences pref = getSharedPreferences("evanPreference",Context.MODE_PRIVATE) ;
+                        SharedPreferences.Editor editor = pref.edit();
+                        editor.putString("id", userid);
+                        editor.putString("name", namesocial);
+                        editor.putString("tipo", email);
+                        editor.putString("imagestr", imagesocial);
+                        editor.putString("origenLog", origen);
+                        editor.commit();
+                        //manda los datos y presenta la activity principal
+
+                       // Log.d("entre", "entre cambio activity");
                         Intent intent = new Intent(getApplicationContext(), Principal.class);
                         intent.putExtra("id", userid);
                         intent.putExtra("name", namesocial);
                         intent.putExtra("imagestr", imagesocial);
                         startActivity(intent);
+                       // Log.d("pase", "pase  start activityy");
 
                     }
                     else{
-                        Snackbar.make(findViewById(android.R.id.content),"vuelva a intentar", Snackbar.LENGTH_SHORT).show();
+                        Log.d("responseBody", "vuelva a intentar");
+                        Snackbar.make(findViewById(android.R.id.content),"vuelva a intentar", Snackbar.LENGTH_INDEFINITE).show();
                     } //end of if
                  }
 
                 @Override
                 public void onFailure(Call<UserResponseWS> call, Throwable t) {
-                    Snackbar.make(findViewById(android.R.id.content), t.toString(), Snackbar.LENGTH_SHORT).show();
+                    Log.d("call",  t.toString());
+                    Snackbar.make(findViewById(android.R.id.content), t.toString(), Snackbar.LENGTH_INDEFINITE).show();
                 }
             });
         }
         catch (Exception e)
         {
+            Log.d("try", e.toString());
                 Snackbar.make(findViewById(android.R.id.content), e.toString(), Snackbar.LENGTH_SHORT).show();
         }
     }
-
+    //logeo nombre y correo normal
+    @OnClick(R.id.buttonaccount)
+    void buttonClick() {
+          try {
+              Log.d("boton login","entre boton login");
+            namesocial = namelogin.getText().toString();
+            imagesocial = "http://132.248.246.61/2017/imagenes/blanco.png";
+             userid =  emailogin.getText().toString();
+            email = emailogin.getText().toString();
+            origen = "login";
+            cambiaActivity();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     //faceook
     @Override
     public void onCancel() {
