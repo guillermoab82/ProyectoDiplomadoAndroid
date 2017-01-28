@@ -41,12 +41,12 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-fresco.pro'
-            buildConfigField "String","URL","\"http://132.247.120.21\""
+            buildConfigField "String","URL","\"http://www.posgrado.unam.mx/\""
             buildConfigField "String", "URL1", "\"http://132.248.246.61:74\""
         }
         debug {
             minifyEnabled true
-            buildConfigField "String","URL","\"http://132.247.120.21\""
+            buildConfigField "String","URL","\"http://www.posgrado.unam.mx/\""
             buildConfigField "String", "URL1", "\"http://132.248.246.61:74\""
     }
 
