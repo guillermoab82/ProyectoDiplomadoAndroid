@@ -24,7 +24,10 @@
     <string name="txtFav">Add Favarities</string>
     <string name="txtCalendar">Add Calendar</string>
     <string name="msjShare">Share event info</string>
-    <string name="server_client_id" translatable="false">363120381779-guqfr9dtmv70amrqh1r7qumvn2oa4qck.apps.googleusercontent.com</string>
+<<<<<<< HEAD
     <string name="EventCalendarTitle">Event CEP</string>
+=======
+    <string name="server_client_id" translatable="false">363120381779-guqfr9dtmv70amrqh1r7qumvn2oa4qck.apps.googleusercontent.com</string>
+>>>>>>> e85747b02a0d90745ebd1f8a18a93ffb67ea32b5
 
 </resources>
