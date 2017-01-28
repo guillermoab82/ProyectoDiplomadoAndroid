@@ -26,5 +26,6 @@
     <string name="msjShare">Compartir informacion del evento</string>
     <string name="server_client_id" translatable="false">641819724609-qlcbpunhd39tlsdtqg0tj55rfhtb3tam.apps.googleusercontent.com</string>
     <string name="facebook_app_id" translatable="false">1317356271629011</string>
+    <string name="EventCalendarTitle">Eventos CEP</string>
 
 </resources>
