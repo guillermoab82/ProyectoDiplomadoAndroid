@@ -1,6 +1,7 @@
 package mx.unam.posgrado.eventoscep;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -60,7 +61,10 @@ public class Principal extends AppCompatActivity {
                         return true;
                     case R.id.informacion:
                         Snackbar.make(findViewById(android.R.id.content), "Información.", Snackbar.LENGTH_SHORT).show();
-                        //getFragmentManager().beginTransaction().replace(R.id.activity_detalles_fldetalles,new fragment_listing()).commit();
+                        Intent intent = new Intent(Principal.this, AcercaDe.class);
+                        startActivity(intent);
+                        //getFragmentManager().beginTransaction().replace(R.id.main_container,new AcercaDe()).commit();
+
                         return true;
 
                     case R.id.enlaces:

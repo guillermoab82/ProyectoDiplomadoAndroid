@@ -27,4 +27,11 @@
     <string name="server_client_id" translatable="false">363120381779-guqfr9dtmv70amrqh1r7qumvn2oa4qck.apps.googleusercontent.com</string>
     <string name="EventCalendarTitle">Event CEP</string>
 
+    <string name="title">Acerca de...</string>
+    <string name="coordinator1">Coordinador</string>
+    <string name="coordinator">Dr. Javier Nieto Gutiérrez</string>
+    <string name="twitter">"@"CEPUNAM    </string>
+    <string name="facebook">UnamPosgrado</string>
+    <string name="ubication">Ubicación</string>
+
 </resources>

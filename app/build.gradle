@@ -88,4 +88,8 @@ dependencies {
     //google
     compile 'com.google.code.gson:gson:2.2.+'
    compile 'com.google.android.gms:play-services-auth:9.0.0'
+
+    // GoogleMaps
+    compile 'com.google.android.gms:play-services-maps:9.0.0'
+
 }
